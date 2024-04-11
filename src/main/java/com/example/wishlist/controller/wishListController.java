@@ -1,11 +1,12 @@
 package com.example.wishlist.controller;
 
+import com.example.wishlist.model.User;
 import com.example.wishlist.model.Wish;
-import com.example.wishlist.wishList.WishList;
+import com.example.wishlist.repository.Bruger;
+import com.example.wishlist.repository.WishList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -14,6 +15,8 @@ public class wishListController {
 
     @Autowired
     WishList wishlist;
+    @Autowired
+    Bruger bruger;
 
     @GetMapping("/create")
     public String create(){
@@ -31,5 +34,19 @@ public class wishListController {
         Wish wish = new Wish(wishListID, title, beskrivelse, billede, link);
         wishlist.create(wish);
         return "redirect:/create";
+    }
+
+    @GetMapping("/registrer")
+    public String registrer() {
+        return "registrer";
+    }
+    @PostMapping("/registrer")
+    public String createUser(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password
+    ) {
+        User user = new User(username, password);
+        bruger.create(user);
+        return "redirect:/registrer";
     }
 }

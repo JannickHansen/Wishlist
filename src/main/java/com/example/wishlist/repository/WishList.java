@@ -1,4 +1,4 @@
-package com.example.wishlist.wishList;
+package com.example.wishlist.repository;
 
 import com.example.wishlist.model.Wish;
 import org.springframework.beans.factory.annotation.Autowired;
