@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ønskebogen.dk</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: darkblue;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: antiquewhite;
+            color: darkblue;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .wish {
+            width: calc(33.33% - 20px);
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .wish h2 {
+            color: darkblue;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: antiquewhite;
+            color: darkblue;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .picture {
+            margin: 20px;
+            padding: 50px;
+            vertical-align: center;
+            background-color: antiquewhite;
+
+
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <h1>Ønskebogen.dk</h1>
+        <p>Opret din ønskesky og del den med venner og familie!</p>
+    </div>
+</header>
+
+<div class="container">
+    <div class="wish">
+        <h2>Log in</h2>
+        <a href="/Login">Login</a>
+        <p>Log ind for at opret ønskeliste</p>
+    </div>
+
+    <div class="wish">
+        <h2>Opret bruger</h2>
+        <p>Klik her for at oprette en bruger på ønskebogen</p>
+    </div>
+
+    <div class="wish">
+        <h2>Del din ønskebog</h2>
+        <p>Her kan du dele din ønskebog med andre</p>
+    </div>
+    <div class="picture">
+    <img src="../static/img/mange-forskellige-gaver.png" width=>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2024 Ønskebogen.dk</p>
+    </div>
+</footer>
+
+
+
+</body>
+</html>
+
