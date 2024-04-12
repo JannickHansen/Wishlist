@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret Ønske</title>
+</head>
+<body>
+
+<h1>Opret Nyt Ønske</h1>
+
+<form action="/create" method="post">
+
+    <label for="wishListID-field">wishListID</label>
+    <input id="wishListID-field" name="wishListID" type="number">
+
+    <label for="title-field">title</label>
+    <input id="title-field" name="title" type="text">
+
+    <label for="beskrivelse-field">beskrivelse</label>
+    <input id="beskrivelse-field" name="beskrivelse" type="text">
+
+    <label for="billede-field">billede</label>
+    <input id="billede-field" name="billede" type="text">
+
+    <label for="link-field">link</label>
+    <input id="link-field" name="link" type="text">
+
+    <input type="submit" value="Opret">
+
+</form>
+</body>
+</html>
