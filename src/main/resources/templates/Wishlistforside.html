@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ønskebogen.dk</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/styles.css" th:href="@{css/styles.css}">
     <style>
         /* Reset styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            color: darkblue;
         }
 
         body {
@@ -56,6 +57,10 @@
             color: darkblue;
         }
 
+        .b1 {
+            color: darkblue;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -83,29 +88,37 @@
 
 <header>
     <div class="header-container">
+        <a href="/" style="text-decoration: none;">
         <h1>Ønskebogen.dk</h1>
         <p>Opret din ønskesky og del den med venner og familie!</p>
+        </a>
     </div>
 </header>
 
 <div class="container">
     <div class="wish">
-        <h2>Log in</h2>
-        <a href="/Login">Login</a>
-        <p>Log ind for at opret ønskeliste</p>
+
+        <a href="/Login" style="text-decoration: none;">
+            <h2>Log in</h2>
+        <p class = "b1">Log ind for at opret ønskeliste</p>
+        </a>
     </div>
 
     <div class="wish">
+        <a href="/registrer" style="text-decoration: none;">
         <h2>Opret bruger</h2>
-        <p>Klik her for at oprette en bruger på ønskebogen</p>
+        <p class = "b1">Klik her for at oprette en bruger på ønskebogen</p>
+        </a>
     </div>
 
     <div class="wish">
+        <a href="/Login" style="text-decoration: none;">
         <h2>Del din ønskebog</h2>
-        <p>Her kan du dele din ønskebog med andre</p>
+        <p class = "b1">Her kan du dele din ønskebog med andre</p>
+        </a>
     </div>
     <div class="picture">
-    <img src="../static/img/mange-forskellige-gaver.png" width=>
+    <img src="../static/img/mange-forskellige-gaver.png" width=100% th:src="@{img/mange-forskellige-gaver.png}">
     </div>
 </div>
 
@@ -114,9 +127,6 @@
         <p>&copy; 2024 Ønskebogen.dk</p>
     </div>
 </footer>
-
-
-
 </body>
 </html>
 
