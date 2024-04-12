@@ -55,4 +55,8 @@ public class wishListController {
         bruger.create(user);
         return "redirect:/registrer";
     }
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }
