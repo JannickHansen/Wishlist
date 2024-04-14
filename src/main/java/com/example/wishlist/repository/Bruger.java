@@ -7,6 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 @Repository
 public class Bruger {
 
@@ -14,7 +17,7 @@ public class Bruger {
     private JdbcTemplate jdbcTemplate;
 
     public void create(User user) {
-        final String INSERT_SQL = "INSERT INTO wish (username, password) VALUES (?, ?)";
+        final String INSERT_SQL = "INSERT INTO users (username, password) VALUES (?, ?)";
         jdbcTemplate.update(INSERT_SQL, user.getUsername(), user.getPassword());
     }
 

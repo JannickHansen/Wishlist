@@ -1,8 +1,10 @@
 package com.example.wishlist.controller;
 
+import ch.qos.logback.core.model.Model;
 import com.example.wishlist.model.User;
 import com.example.wishlist.model.Wish;
 import com.example.wishlist.repository.Bruger;
+import com.example.wishlist.repository.DatabaseManager;
 import com.example.wishlist.repository.WishList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,6 @@ public class wishListController {
     WishList wishlist;
     @Autowired
     Bruger bruger;
-
 
     @GetMapping("/")
     public String forside() {
@@ -58,5 +59,27 @@ public class wishListController {
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+    @PostMapping("/login")
+    public String login(@RequestParam String username, @RequestParam String password) {
+        if (DatabaseManager.authenticateUser(username, password)) {
+            return "redirect:/create";
+        } else {
+
+            return "redirect:/loginError";
+        }
+    }
+    @GetMapping("/loginError")
+    public String loginError() {
+        return "loginError";
+    }
+    @PostMapping("/loginError")
+    public String loginError(@RequestParam String username, @RequestParam String password) {
+        if (DatabaseManager.authenticateUser(username, password)) {
+            return "redirect:/create";
+        } else {
+
+            return "redirect:/loginError";
+        }
     }
 }
