@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ønskebogen.dk</title>
+    <link rel="stylesheet" href="../static/styles.css" th:href="@{css/styles.css}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: darkblue;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: darkblue;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: antiquewhite;
+            color: darkblue;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wish {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .wish h2 {
+            color: darkblue;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: antiquewhite;
+            color: darkblue;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        form {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: darkblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1a4d80;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="/" style="text-decoration: none;">
+            <h1>Ønskebogen.dk</h1>
+            <p>Opret din ønskesky og del den med venner og familie!</p>
+        </a>
+    </div>
+</header>
+<div class="container">
+    <div class="wish">
+
+        <a th:href="@{'/create?wishListID=' + ${id}}" style="text-decoration: none;">
+            <h2>Opret Ønske</h2>
+            <p class = "b1">Klik for at oprette nyt ønske</p>
+        </a>
+    </div>
+</div>
+<div class="container">
+    <div th:each="wish : ${wishes}" class="wish">
+        <h2 th:text="${wish.title}"></h2>
+        <p th:text="${wish.beskrivelse}"></p>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2024 Ønskebogen.dk</p>
+    </div>
+</footer>
+
+</body>
+</html>
