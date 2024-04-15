@@ -21,17 +21,20 @@ public class DatabaseManager {
         DatabaseManager.dataSource = dataSource;
     }
 
-    public static boolean authenticateUser(String username, String password) {
+    public static int authenticateUser(String username, String password) {
         try (Connection conn = dataSource.getConnection()) {
             String query = "SELECT * FROM users WHERE username = ? AND password = ?";
             PreparedStatement statement = conn.prepareStatement(query);
             statement.setString(1, username);
             statement.setString(2, password);
-            ResultSet result = statement.executeQuery();
-            return result.next(); // true if user exists with given credentials
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt("id");
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+        return -1;
     }
 }

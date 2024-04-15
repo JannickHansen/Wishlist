@@ -1,6 +1,5 @@
 package com.example.wishlist.controller;
 
-import ch.qos.logback.core.model.Model;
 import com.example.wishlist.model.User;
 import com.example.wishlist.model.Wish;
 import com.example.wishlist.repository.Bruger;
@@ -8,9 +7,12 @@ import com.example.wishlist.repository.DatabaseManager;
 import com.example.wishlist.repository.WishList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class wishListController {
@@ -19,6 +21,8 @@ public class wishListController {
     WishList wishlist;
     @Autowired
     Bruger bruger;
+    @Autowired
+    private WishList wishList;
 
     @GetMapping("/")
     public String forside() {
@@ -32,15 +36,14 @@ public class wishListController {
 
     @PostMapping("/create")
     public String createWish(
-            @RequestParam("wishListID") int wishListID,
+            @RequestParam("id") int wishListID,
             @RequestParam("title") String title,
             @RequestParam("beskrivelse") String beskrivelse,
-            @RequestParam("billede") String billede,
-            @RequestParam("link") String link
+            @RequestParam("billede") String billede
     ) {
-        Wish wish = new Wish(wishListID, title, beskrivelse, billede, link);
+        Wish wish = new Wish(wishListID, title, beskrivelse, billede);
         wishlist.create(wish);
-        return "redirect:/create";
+        return "redirect:/wishlist?id=" + wishListID;
     }
 
     @GetMapping("/registrer")
@@ -62,8 +65,9 @@ public class wishListController {
     }
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password) {
-        if (DatabaseManager.authenticateUser(username, password)) {
-            return "redirect:/create";
+        int wishListID = DatabaseManager.authenticateUser(username, password);
+        if (wishListID != -1) {
+            return "redirect:/wishlist?id=" + wishListID;
         } else {
 
             return "redirect:/loginError";
@@ -75,11 +79,20 @@ public class wishListController {
     }
     @PostMapping("/loginError")
     public String loginError(@RequestParam String username, @RequestParam String password) {
-        if (DatabaseManager.authenticateUser(username, password)) {
-            return "redirect:/create";
+        int wishListID = DatabaseManager.authenticateUser(username, password);
+        if (wishListID != -1) {
+            return "redirect:/wishlist?id=" + wishListID;
         } else {
 
             return "redirect:/loginError";
         }
     }
+    @GetMapping("/wishlist")
+    public String showWishlist(@RequestParam("id") int wishListID, Model model) {
+        List<Wish> wishes = wishList.loadWishList(wishListID);
+        model.addAttribute("wishes", wishes);
+        model.addAttribute("id", wishListID);
+        return "wishlist";
+    }
+
 }
