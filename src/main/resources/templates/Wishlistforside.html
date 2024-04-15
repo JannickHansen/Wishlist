@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ønskebogen.dk</title>
-    <link rel="stylesheet" href="../static/styles.css" th:href="@{css/styles.css}">
+    <title>Ønskebogen</title>
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{css/styles.css}">
     <style>
         /* Reset styles */
         * {
@@ -13,16 +13,7 @@
             box-sizing: border-box;
             color: darkblue;
         }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: darkblue;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
+        .header1 {
             background-color: antiquewhite;
             color: darkblue;
             padding: 20px 0;
@@ -33,6 +24,25 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        .footer1 {
+            text-align: center;
+            padding: 20px;
+            background-color: antiquewhite;
+            color: darkblue;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .body2 {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: darkblue;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
@@ -61,18 +71,6 @@
             color: darkblue;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: antiquewhite;
-            color: darkblue;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
         .picture {
             margin: 20px;
             padding: 50px;
@@ -81,12 +79,11 @@
 
 
         }
-
     </style>
 </head>
-<body>
+<body class="body2">
 
-<header>
+<header class="header1">
     <div class="header-container">
         <a href="/" style="text-decoration: none;">
         <h1>Ønskebogen.dk</h1>
@@ -122,7 +119,7 @@
     </div>
 </div>
 
-<footer>
+<footer class="footer1">
     <div class="footer-container">
         <p>&copy; 2024 Ønskebogen.dk</p>
     </div>
