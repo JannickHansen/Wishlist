@@ -30,13 +30,14 @@ public class wishListController {
     }
 
     @GetMapping("/create")
-    public String create(){
+    public String create(@RequestParam("wishListID") int wishListID, Model model){
+        model.addAttribute("id", wishListID);
         return "create";
     }
 
     @PostMapping("/create")
     public String createWish(
-            @RequestParam("id") int wishListID,
+            @RequestParam("wishListID") Integer wishListID,
             @RequestParam("title") String title,
             @RequestParam("beskrivelse") String beskrivelse,
             @RequestParam("billede") String billede

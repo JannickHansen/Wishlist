@@ -40,8 +40,9 @@
         .container {
             flex: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .wish {
@@ -63,6 +64,7 @@
             padding: 20px;
             background-color: antiquewhite;
             color: darkblue;
+            margin-top: auto;
         }
 
         .footer-container {
@@ -103,6 +105,25 @@
         input[type="submit"]:hover {
             background-color: #1a4d80;
         }
+
+        .link-container {
+            display: flex;
+            justify-content: space-around;
+            width: 80%;
+            margin-bottom: 30px;
+            margin-top: 50px;
+        }
+
+        .link-container a {
+            text-decoration: none;
+            width: 45%;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin: 0 5px;
+        }
     </style>
 </head>
 <body>
@@ -115,16 +136,18 @@
         </a>
     </div>
 </header>
-<div class="container">
-    <div class="wish">
 
-        <a th:href="@{'/create?wishListID=' + ${id}}" style="text-decoration: none;">
+<div class="container">
+    <div class="link-container">
+        <a th:href="@{'/create?wishListID=' + ${id}}">
             <h2>Opret Ønske</h2>
-            <p class = "b1">Klik for at oprette nyt ønske</p>
+            <p class="b1">Klik for at oprette nyt ønske</p>
+        </a>
+        <a th:href="@{'/create?wishListID=' + ${id}}">
+            <h2>Del Ønskeliste</h2>
+            <p class="b1">Klik her for at oprette et link til deling</p>
         </a>
     </div>
-</div>
-<div class="container">
     <div th:each="wish : ${wishes}" class="wish">
         <h2 th:text="${wish.title}"></h2>
         <p th:text="${wish.beskrivelse}"></p>

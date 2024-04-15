@@ -24,7 +24,7 @@ public class WishList {
     }
 
     public void create(Wish wish) {
-        final String INSERT_SQL ="INSERT INTO wish (wishListID, title, beskrivelse, billede, link) VALUES (?, ?, ?, ?)";
+        final String INSERT_SQL ="INSERT INTO wish (wishListID, title, beskrivelse, billede) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(INSERT_SQL, wish.getWishListID(), wish.getTitle(), wish.getBeskrivelse(), wish.getBillede());
     }
 
