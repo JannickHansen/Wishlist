@@ -131,9 +131,14 @@
 
             <label for="billede">Billede (URL):</label>
             <input type="text" id="billede" name="billede" required>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="images" id="images" accept="image/*" multiple>
+                <button type="submit">Upload Billeder</button>
+            </form>
 
             <input type="submit" value="Opret ønske">
         </form>
+
     </div>
 </div>
 
