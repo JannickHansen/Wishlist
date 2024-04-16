@@ -43,6 +43,11 @@ public class wishListController {
             @RequestParam("beskrivelse") String beskrivelse,
             @RequestParam("link") String link
     ) {
+
+        if (link.isEmpty()) {
+            link = "Link:";
+        }
+
         Wish wish = new Wish(wishListID, title, beskrivelse, link);
         wishlist.create(wish);
         return "redirect:/wishlist?wishListID=" + wishListID;
