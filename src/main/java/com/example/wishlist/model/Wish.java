@@ -23,8 +23,15 @@ public class Wish {
         //this.billede = billede;
         this.link = link;
     }
-    public Wish() {}
 
+    public Wish (int wishID, int wishListID, String title, String beskrivelse) {
+        this.wishID = wishID;
+        this.wishListID = wishListID;
+        this.title = title;
+        this.beskrivelse = beskrivelse;
+        //this.billede = billede;
+    }
+    public Wish() {}
     public int getWishID() {return wishID;}
     public int getWishListID() {return wishListID;}
     public String getTitle() {return title;}
