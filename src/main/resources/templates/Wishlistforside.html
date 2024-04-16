@@ -50,17 +50,17 @@
             margin: 20px auto;
             padding: 0 20px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
         }
 
         .wish {
-            width: calc(33.33% - 20px);
+            width: calc(44% - 10px);
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-bottom: 20px;
+            margin-right: 5%;
+            align-content: center;
         }
 
         .wish h2 {
@@ -79,6 +79,16 @@
 
 
         }
+
+        .wish-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
     </style>
 </head>
 <body class="body2">
@@ -93,6 +103,7 @@
 </header>
 
 <div class="container">
+    <div class ="wish-container">
     <div class="wish">
 
         <a href="/login" style="text-decoration: none;">
@@ -106,13 +117,7 @@
         <h2>Opret bruger</h2>
         <p class = "b1">Klik her for at oprette en bruger på ønskebogen</p>
         </a>
-    </div>
-
-    <div class="wish">
-        <a href="/login" style="text-decoration: none;">
-        <h2>Del din ønskebog</h2>
-        <p class = "b1">Her kan du dele din ønskebog med andre</p>
-        </a>
+        </div>
     </div>
     <div class="picture">
     <img src="../static/img/mange-forskellige-gaver.png" width=100% th:src="@{img/mange-forskellige-gaver.png}">
