@@ -203,7 +203,11 @@
         <h2 th:text="${wish.title}"></h2>
         <p th:text="${wish.beskrivelse}"></p>
         <br>
-        <a th:if="${wish.link != null and wish.link != ''}" th:href="${wish.link.startsWith('http') ? wish.link : 'http://' + wish.link}" th:text="${wish.link}" target="_blank"></a>
+        <a th:if="${wish.link != null and wish.link != ''}"
+           th:href="${wish.link.startsWith('http') ? wish.link : 'http://' + wish.link}"
+           th:text="${wish.link}"
+           target="_blank"
+           style="text-decoration: none;"></a>
         <a th:href="@{'/rediger/' + ${wish.getWishID()} + '/' + ${wish.getWishListID()} + '/' + ${wish.getTitle()} + '/' + ${wish.getBeskrivelse()} + '/' + ${wish.getLink()}}" class="rediger-button">Rediger</a>
         <a th:href="@{'/delete/' + ${wish.getWishID()} + '?wishListID=' + ${wishListID}}"
            class="delete-button"
