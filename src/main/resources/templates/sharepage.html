@@ -48,8 +48,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 20px;
-            position: relative;
         }
 
         .wish {
@@ -60,7 +58,6 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
             margin-bottom: 20px;
-            position: relative;
         }
 
         .wish h2 {
@@ -84,40 +81,6 @@
             padding: 0 20px;
         }
 
-        .delete-button {
-            text-decoration: none;
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background-color: red;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .delete-button:hover {
-            background-color: darkred;
-        }
-
-        .rediger-button {
-            text-decoration: none;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: blue;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .rediger-button:hover {
-            background-color: darkblue;
-        }
-
         form {
             width: 100%;
             margin-top: 20px;
@@ -128,47 +91,32 @@
             margin-bottom: 10px;
         }
 
-        input[type="text"],
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"] {
-            background-color: darkblue;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #1a4d80;
-        }
-
-        .link-container {
+        .url-container {
+            width: calc(33.33% - 20px);
             display: flex;
-            justify-content: space-around;
-            width: calc(43.43% - 20px);
-            margin-bottom: 30px;
-            margin-top: 50px;
-        }
-
-        .link-container a {
-            text-decoration: none;
-            width: 100%;
-            padding: 10px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            margin: 0 5px;
+            padding: 30px;
+            margin: 2.5% auto 20px;
+            cursor: pointer;
         }
+
+        .url-container h2 {
+            color: darkblue;
+        }
+
+        .url-container p {
+            color: darkblue;
+        }
+
+        .url-container span {
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
@@ -182,28 +130,17 @@
     </div>
 </header>
 
+<div class="url-container" onclick="copyUrl()">
+    Klik for for at kopiere URL: <span id="pageUrl"></span>
+</div>
+
 <div class="containerwish">
-    <div class="link-container">
-        <a th:href="@{'/create?wishListID=' + ${wishListID}}">
-            <h2>Opret Ønske</h2>
-            <p class="b1">Klik for at oprette nyt ønske</p>
-        </a>
-        <a th:href="@{'/sharepage?wishListID=' + ${wishListID}}">
-            <h2>Del Ønskeliste</h2>
-            <p class="b1">Klik her for at oprette et link til deling</p>
-        </a>
-    </div>
     <div th:each="wish : ${wishes}" class="wish">
         <h2 th:text="${wish.title}"></h2>
         <p th:text="${wish.beskrivelse}"></p>
         <br>
         <a th:if="${wish.link != null and wish.link != ''}" th:href="${wish.link.startsWith('http') ? wish.link : 'http://' + wish.link}" th:text="${wish.link}" target="_blank"></a>
-        <a th:href="@{'/rediger/' + ${wish.getWishID()} + '/' + ${wish.getWishListID()} + '/' + ${wish.getTitle()} + '/' + ${wish.getBeskrivelse()} + '/' + ${wish.getLink()}}" class="rediger-button">Rediger</a>
-        <a th:href="@{'/delete/' + ${wish.getWishID()} + '?wishListID=' + ${wishListID}}"
-           class="delete-button"
-           onclick="return confirm('Er du sikker på, at du vil slette dette ønske?');">Slet</a>
     </div>
-
 </div>
 
 <footer>
@@ -211,6 +148,20 @@
         <p>&copy; 2024 Ønskebogen.dk</p>
     </div>
 </footer>
+
+<script>
+    function copyUrl() {
+        var url = window.location.href;
+        var dummy = document.createElement("input");
+        document.body.appendChild(dummy);
+        dummy.value = url;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("URL copied to clipboard: " + url);
+    }
+    document.getElementById("pageUrl").innerText = window.location.href;
+</script>
 
 </body>
 </html>

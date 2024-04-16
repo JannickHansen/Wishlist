@@ -5,18 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoginFejl</title>
     <link rel="stylesheet" href="../static/css/styles.css" th:href="@{css/styles.css}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: darkblue;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: darkblue;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 60px 0;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: antiquewhite;
+            color: darkblue;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: antiquewhite;
+            color: darkblue;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    </style>
 </head>
+
 <body class="body1">
+<header>
+    <div class="header-container">
+        <a href="/" style="text-decoration: none;">
+            <h1>Ønskebogen</h1>
+            <p>Opret din ønskeliste og del den med venner og familie!</p>
+        </a>
+    </div>
+</header>
 <h2>Login</h2>
 <form class="form1" th:action="@{/login}" th:object="${user}" method="post">
     <input class="input1" type="text" id="username" name="username" placeholder="Brugernavn" required><br>
     <input class="input1" type="password" id="password" name="password" placeholder="Kodeord"  required><br>
-    <button class="button1" type="submit">Login</button>
     <p class="error">Forkert brugernavn eller kodeord, prøv igen</p>
+    <br>
+    <button class="button1" type="submit">Login</button>
 </form>
 <br>
 <a href="/" style="text-decoration: none;">
     <button class="button1">Tilbage til forsiden</button>
 </a>
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2024 Ønskebogen.dk</p>
+    </div>
+</footer>
 </body>
 </html>
