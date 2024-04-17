@@ -29,7 +29,7 @@
 }
 .header1 {
     background-color: deepskyblue;
-    color: white;
+    color: deepskyblue;
     padding: 20px 0;
     text-align: center;
 }
@@ -43,7 +43,7 @@
     text-align: center;
     padding: 20px;
     background-color: deepskyblue;
-    color: white;
+    color: dodgerblue;
 }
 
 .footer-container {
@@ -53,7 +53,7 @@
 }
 .body2 {
     font-family: Arial, sans-serif;
-    background-color: whitesmoke;
+    background-image: linear-gradient(to right, deepskyblue, lightskyblue);
     color: deepskyblue;
     margin: 0;
     padding: 0;
@@ -69,12 +69,11 @@
 }
 
 .b1 {
-    color: white;
+    color: deepskyblue;
 }
 
 .picture {
-    margin: 20px;
-    padding: 50px;
+    margin: 70px;
     vertical-align: center;
     background-color: deepskyblue;
 
