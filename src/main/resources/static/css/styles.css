@@ -28,8 +28,8 @@
     color: red;
 }
 .header1 {
-    background-color: antiquewhite;
-    color: darkblue;
+    background-color: deepskyblue;
+    color: white;
     padding: 20px 0;
     text-align: center;
 }
@@ -42,8 +42,8 @@
 .footer1 {
     text-align: center;
     padding: 20px;
-    background-color: antiquewhite;
-    color: darkblue;
+    background-color: deepskyblue;
+    color: white;
 }
 
 .footer-container {
@@ -53,8 +53,8 @@
 }
 .body2 {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: darkblue;
+    background-color: whitesmoke;
+    color: deepskyblue;
     margin: 0;
     padding: 0;
 }
@@ -69,14 +69,14 @@
 }
 
 .b1 {
-    color: darkblue;
+    color: white;
 }
 
 .picture {
     margin: 20px;
     padding: 50px;
     vertical-align: center;
-    background-color: antiquewhite;
+    background-color: deepskyblue;
 
 
 }
