@@ -24,8 +24,8 @@ public class WishList {
     }
 
     public void create(Wish wish) {
-        final String INSERT_SQL ="INSERT INTO wish (wishListID, title, beskrivelse, link) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(INSERT_SQL, wish.getWishListID(), wish.getTitle(), wish.getBeskrivelse(), wish.getLink());
+        final String INSERT_SQL ="INSERT INTO wish (wishListID, title, beskrivelse, billede, link) VALUES (?, ?, ?, ?, ?)";
+        jdbcTemplate.update(INSERT_SQL, wish.getWishListID(), wish.getTitle(), wish.getBeskrivelse(), wish.getBillede(), wish.getLink());
     }
 
     public void deletewishID(int wishID){
@@ -34,8 +34,8 @@ public class WishList {
     }
 
     public void update(Wish wish) {
-        final String UPDATE_SQL = "UPDATE wish SET wishListID = ?, title = ?, beskrivelse = ?, link = ? WHERE wishID = ?";
-        jdbcTemplate.update(UPDATE_SQL, wish.getWishListID(), wish.getTitle(), wish.getBeskrivelse(), wish.getLink(), wish.getWishID());
+        final String UPDATE_SQL = "UPDATE wish SET wishListID = ?, title = ?, beskrivelse = ?, billede = ?, link = ? WHERE wishID = ?";
+        jdbcTemplate.update(UPDATE_SQL, wish.getWishListID(), wish.getTitle(), wish.getBeskrivelse(), wish.getBillede(), wish.getLink(), wish.getWishID());
     }
 
     public List<Wish> loadWishList(int wishListID) {
@@ -55,6 +55,7 @@ public class WishList {
                         wish.setWishListID(resultSet.getInt("wishListID"));
                         wish.setTitle(resultSet.getString("title"));
                         wish.setBeskrivelse(resultSet.getString("beskrivelse"));
+                        wish.setBillede(resultSet.getString("billede"));
                         wish.setLink(resultSet.getString("link"));
 
                         wishes.add(wish);

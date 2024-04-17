@@ -171,7 +171,19 @@
             <label for="link">Link (URL):</label>
             <input type="text" id="link" name="link" th:value="${link}">
 
-            <input type="file" name="billede" id="billede" accept="image/*">
+            <label for="billede">Vælg billede:</label>
+            <select name="billede" id="billede">
+                <option value="img/gaveimg.jpg">Gaver</option>
+                <option value="img/legoimg.jpeg">Lego</option>
+                <option value="img/bookimg.jpg">Bøger</option>
+                <option value="img/clothesimg.jpg">Tøj</option>
+                <option value="img/electronicsimg.jpg">Elektronik</option>
+                <option value="img/furnitureimg.jpg">Møbler</option>
+                <option value="img/makeupimg.jpg">Kosmetik</option>
+                <option value="img/phoneimg.jpg">Telefon</option>
+                <option value="img/toysimg.jpg">Legetøj</option>
+                <option value="img/travelimg.jpg">Rejser</option>
+            </select>
             <br>
             <br>
             <div class="button-container">

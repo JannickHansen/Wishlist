@@ -53,8 +53,8 @@
         }
 
         .wish {
-            width: calc(33.33% - 20px);
-            max-width: 400px;
+            width: calc(53.33% - 20px);
+            max-width: 600px;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -91,15 +91,14 @@
 
         .delete-button {
             text-decoration: none;
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
             background-color: red;
             color: white;
             padding: 5px 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            width: 15%;
+            margin-left: auto;
         }
 
         .delete-button:hover {
@@ -108,15 +107,15 @@
 
         .rediger-button {
             text-decoration: none;
-            position: absolute;
-            top: 10px;
-            right: 10px;
             background-color: blue;
             color: white;
             padding: 5px 10px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            margin-bottom: 5px;
+            width: 15%;
+            margin-left: auto;
         }
 
         .rediger-button:hover {
@@ -162,6 +161,12 @@
             width: calc(43.43% - 20px);
             margin-bottom: 30px;
             margin-top: 50px;
+            position: sticky;
+            padding-top: 1%;
+            padding-bottom: 0.5%;
+            top: 9.95%;
+            z-index: 1000;
+            background-color: deepskyblue;
         }
 
         .link-container a {
@@ -173,6 +178,36 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
             margin: 0 5px;
+        }
+
+        .input-image-container {
+            display: flex;
+        }
+
+        .title-container {
+            flex: 1;
+        }
+
+        .image-container {
+            width: auto;
+            max-width: 25%;
+            max-height: 25%;
+            height: auto;
+            overflow: hidden;
+            margin-right: 17%;
+            text-align: right;
+        }
+
+        .image-container img {
+            width: auto;
+            max-width: 90%;
+            max-height: 90%;
+            height: auto;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
         }
 
     </style>
@@ -200,20 +235,27 @@
         </a>
     </div>
     <div th:each="wish : ${wishes}" class="wish">
-        <h2 th:text="${wish.title}"></h2>
-        <p th:text="${wish.beskrivelse}"></p>
-        <br>
-        <a th:if="${wish.link != null and wish.link != ''}"
-           th:href="${wish.link.startsWith('http') ? wish.link : 'http://' + wish.link}"
-           th:text="${wish.link}"
-           target="_blank"
-           style="text-decoration: none;"></a>
-        <a th:href="@{'/rediger/' + ${wish.getWishID()} + '/' + ${wish.getWishListID()} + '/' + ${wish.getTitle()} + '/' + ${wish.getBeskrivelse()} + '/' + ${wish.getLink()}}" class="rediger-button">Rediger</a>
-        <a th:href="@{'/delete/' + ${wish.getWishID()} + '?wishListID=' + ${wishListID}}"
-           class="delete-button"
-           onclick="return confirm('Er du sikker på, at du vil slette dette ønske?');">Slet</a>
+        <div class="input-image-container">
+            <div class="title-container">
+                <h2 th:text="${wish.title}"></h2>
+                <p th:text="${wish.beskrivelse}"></p>
+            </div>
+            <div class="image-container">
+                <img src="@{'../static/' + ${wish.billede}}" th:src="@{${wish.billede}}" alt="Wish Image">
+            </div>
+        </div>
+        <div class="button-container">
+            <a th:if="${wish.link != null and wish.link != ''}"
+               th:href="${wish.link.startsWith('http') ? wish.link : 'http://' + wish.link}"
+               th:text="${wish.link}"
+               target="_blank"
+               style="text-decoration: none;"></a>
+            <a th:href="@{'/rediger/' + ${wish.getWishID()} + '/' + ${wish.getWishListID()} + '/' + ${wish.getTitle()} + '/' + ${wish.getBeskrivelse()} + '/' + ${wish.getLink()}}" class="rediger-button">Rediger</a>
+            <a th:href="@{'/delete/' + ${wish.getWishID()} + '?wishListID=' + ${wishListID}}"
+               class="delete-button"
+               onclick="return confirm('Er du sikker på, at du vil slette dette ønske?');">Slet</a>
+        </div>
     </div>
-
 </div>
 
 <footer>

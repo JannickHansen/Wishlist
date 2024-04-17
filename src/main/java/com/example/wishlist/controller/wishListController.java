@@ -41,14 +41,17 @@ public class wishListController {
             @RequestParam("wishListID") Integer wishListID,
             @RequestParam("title") String title,
             @RequestParam("beskrivelse") String beskrivelse,
+            @RequestParam("billede") String billedeTemp,
             @RequestParam("link") String link
     ) {
+
+        String billede = "/" + billedeTemp;
 
         if (link.isEmpty()) {
             link = "Link:";
         }
 
-        Wish wish = new Wish(wishListID, title, beskrivelse, link);
+        Wish wish = new Wish(wishListID, title, beskrivelse, billede, link);
         wishlist.create(wish);
         return "redirect:/wishlist?wishListID=" + wishListID;
     }
@@ -134,14 +137,17 @@ public class wishListController {
             @RequestParam("wishListID") int wishListID,
             @RequestParam("title") String title,
             @RequestParam("beskrivelse") String beskrivelse,
+            @RequestParam("billede") String billedeTemp,
             @RequestParam("link") String link
     ){
+
+        String billede = "/" + billedeTemp;
 
         if (link.isEmpty()) {
             link = "Link:";
         }
 
-            Wish wish = new Wish(wishID, wishListID, title, beskrivelse, link);
+            Wish wish = new Wish(wishID, wishListID, title, beskrivelse, billede, link);
             wishlist.update(wish);
 
         return "redirect:/wishlist?wishListID=" + wishListID;

@@ -5,22 +5,22 @@ public class Wish {
     int wishListID;
     String title;
     String beskrivelse;
-    //String billede;
+    String billede;
     String link;
-    public Wish(int wishListID, String title, String beskrivelse, String link) {
+    public Wish(int wishListID, String title, String beskrivelse, String billede, String link) {
         this.wishListID = wishListID;
         this.title = title;
         this.beskrivelse = beskrivelse;
-        //this.billede = billede;
+        this.billede = billede;
         this.link = link;
     }
 
-    public Wish (int wishID, int wishListID, String title, String beskrivelse, String link) {
+    public Wish (int wishID, int wishListID, String title, String beskrivelse, String billede, String link) {
         this.wishID = wishID;
         this.wishListID = wishListID;
         this.title = title;
         this.beskrivelse = beskrivelse;
-        //this.billede = billede;
+        this.billede = billede;
         this.link = link;
     }
 
@@ -36,7 +36,7 @@ public class Wish {
     public int getWishListID() {return wishListID;}
     public String getTitle() {return title;}
     public String getBeskrivelse() {return beskrivelse;}
-    //public String getBillede() {return billede;}
+    public String getBillede() {return billede;}
     public String getLink() {return link;}
     public int setWishID(int wishID) {
         this.wishID = wishID;
@@ -54,10 +54,10 @@ public class Wish {
         this.beskrivelse = beskrivelse;
         return this.beskrivelse;
     }
-    /*public String setBillede(String billede) {
+    public String setBillede(String billede) {
         this.billede = billede;
         return this.billede;
-    }*/
+    }
 
     public String setLink(String link) {
         this.link = link;

@@ -47,17 +47,24 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
         }
 
         .wish {
             width: calc(33.33% - 20px);
-            max-width: 400px;
+            max-width: 500px;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
             margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            position: relative;
         }
 
         .wish h2 {
@@ -117,6 +124,22 @@
             margin-top: 10px;
         }
 
+        .image-container {
+            width: auto;
+            max-width: 20%;
+            max-height: 20%;
+            height: auto;
+            overflow: hidden;
+            margin-left: auto;
+            margin-top: -7%;
+        }
+
+        .image-container img {
+            width: auto;
+            max-width: 100%;
+            max-height: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -140,6 +163,9 @@
         <p th:text="${wish.beskrivelse}"></p>
         <br>
         <a th:if="${wish.link != null and wish.link != ''}" th:href="${wish.link.startsWith('http') ? wish.link : 'http://' + wish.link}" th:text="${wish.link}" target="_blank"></a>
+        <div class="image-container">
+            <img src="@{'../static/' + ${wish.billede}}" th:src="@{${wish.billede}}" alt="Wish Image">
+        </div>
     </div>
 </div>
 
