@@ -21,12 +21,4 @@ public class Bruger {
         jdbcTemplate.update(INSERT_SQL, user.getUsername(), user.getPassword());
     }
 
-    public User findById(int userID) {
-
-        final String FIND_BY_ID_SQL = "SELECT * FROM products WHERE id = ?";
-
-        RowMapper<User> rowMapper = new BeanPropertyRowMapper<>(User.class);
-
-        return jdbcTemplate.queryForObject(FIND_BY_ID_SQL, rowMapper, userID);
-    }
 }
